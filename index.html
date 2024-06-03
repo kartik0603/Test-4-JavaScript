@@ -1,35 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test-4</title>
-  </head>
-  <body>
-    <div style="display: flex; justify-content: center; align-items: center; margin:15px ; background-color: aquamarine;">
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-    </div>
-    <div style="display: flex; justify-content: center; align-items: center; margin:15px ; background-color: aquamarine;">
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-    </div>
 
-    <div style="display: flex; justify-content: center; align-items: center; margin:15px ; background-color: aquamarine;">
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test-4 OOP</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: "Arial", sans-serif;
+    }
+
+    #data,
+    #money {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+    }
+
+    #data input,
+    #money input {
+      margin-bottom: 10px;
+    }
+
+    #check_balance {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      text-align: center;
+    }
+
+    .container-fluid {
+      margin-top: 20px;
+    }
+
+    .card {
+      margin: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      border-radius: 8px;
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    .card-body {
+      text-align: center;
+    }
+
+    .card .btn {
+      margin-top: 10px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid d-flex justify-content-center">
+    <form id="data" class="col-md-3">
+      <input id="name" class="form-control" type="text" placeholder="Account Holder Name" />
+      <input id="Number" class="form-control" type="number" placeholder="Mobile Number" />
+      <input id="acnumber" class="form-control" type="number" placeholder="Account Number" />
+      <button type="submit" id="submit_data" class="btn btn-primary">
+        Submit
+      </button>
+    </form>
+
+    <form id="money" class="col-md-3">
+      <input id="deposit_money" class="form-control" type="number" placeholder="Deposit Money" />
+      <button type="submit" id="money_submit" class="btn btn-success">
+        Deposit
+      </button>
+    </form>
+
+    <div id="check_balance" class="col-md-3">
+      <p id="balance_check">Your balance will appear here.</p>
+      <button id="check_balance_button" class="btn btn-info">
+        Check Balance
+      </button>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; margin:15px ; background-color: aquamarine;">
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
-      <div style="height: 300px; width: 250px; background-color: black"></div>
+  </div>
+
+  <div id="account_info" class="container text-center">
+    <h3>Account Information</h3>
+    <p id="account_holder_name"></p>
+    <p id="account_mobile"></p>
+    <p id="account_number"></p>
+    <p id="account_balance"></p>
+  </div>
+
+  <div id="products_box" class="container">
+    <div class="row">
+      <div class="card col-lg-3 col-md-6">
+        <img class="img-fluid" src="avenger 160 streat.jpg" class="card-img-top" alt="Bajaj Avenger 160 Street" />
+        <div class="card-body">
+          <p class="card-text">Bajaj Avenger 160 Street</p>
+          <p style="font-size: 15px; color: rgb(56, 56, 56)">On Road Price</p>
+          <p style="font-size: 22px; color: black">&#8377; 1,45,000/-</p>
+          <button class="btn btn-primary buy-button" data-product="Bajaj Avenger 160 Street" data-price="145000">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="card col-lg-3 col-md-6">
+        <img class="img-fluid" src="avenger cruise.jpg" class="card-img-top" alt="Bajaj Avenger 220 Cruise" />
+        <div class="card-body">
+          <p class="card-text">Bajaj Avenger 220 Cruise</p>
+          <p style="font-size: 15px; color: rgb(56, 56, 56)">On Road Price</p>
+          <p style="font-size: 22px; color: black">&#8377; 1,95,000/-</p>
+          <button class="btn btn-primary buy-button" data-product="Bajaj Avenger 220 Cruise" data-price="195000">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="card col-lg-3 col-md-6">
+        <img class="img-fluid" src="bajaj-pulsar-200-ns65df4e8f1a6e0 (1).jpg" class="card-img-top"
+          alt="Bajaj Pulsar N200" />
+        <div class="card-body">
+          <p class="card-text">Bajaj Pulsar N200</p>
+          <p style="font-size: 15px; color: rgb(56, 56, 56)">On Road Price</p>
+          <p style="font-size: 22px; color: black">&#8377; 1,75,000/-</p>
+          <button class="btn btn-primary buy-button" data-product="Bajaj Pulsar N200" data-price="175000">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="card col-lg-3 col-md-6">
+        <img class="img-fluid" src="pewter-grey-bajaj-pulsar-160-image.jpeg" class="card-img-top"
+          alt="Bajaj Pulsar N160" />
+        <div class="card-body">
+          <p class="card-text">Bajaj Pulsar N160</p>
+          <p style="font-size: 15px; color: rgb(56, 56, 56)">On Road Price</p>
+          <p style="font-size: 22px; color: black">&#8377; 1,65,000/-</p>
+          <button class="btn btn-primary buy-button" data-product="Bajaj Pulsar N160" data-price="165000">
+            Buy Now
+          </button>
+        </div>
+      </div>
     </div>
-  </body>
+  </div>
+
+  <script>
+    class BankAccount {
+      #accountNo;
+      #name;
+      #amount;
+
+      constructor(accountNo) {
+        this.#accountNo = accountNo;
+        this.#name = "";
+        this.#amount = 0;
+      }
+
+      getAccountNo() {
+        return this.#accountNo;
+      }
+
+      setAccountNo(accountNo) {
+        this.#accountNo = accountNo;
+      }
+
+      getName() {
+        return this.#name;
+      }
+
+      setName(name) {
+        this.#name = name;
+      }
+
+      deposit(amount) {
+        if (amount > 0) {
+          this.#amount += amount;
+          console.log(`Deposited ₹${amount}`);
+        } else {
+          console.log("Please enter an amount greater than zero.");
+        }
+      }
+
+      getBalance() {
+        return this.#amount;
+      }
+
+      withdraw(reqAmount) {
+        if (reqAmount > 0 && reqAmount <= this.#amount) {
+          this.#amount -= reqAmount;
+          console.log(`Withdrawn ₹${reqAmount}. Please collect your amount.`);
+        } else {
+          console.log("Insufficient balance or invalid withdrawal amount.");
+        }
+      }
+    }
+
+    let userAccount = new BankAccount(625982650000);
+
+    document
+      .getElementById("submit_data")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        let name = document.getElementById("name").value;
+        let number = document.getElementById("Number").value;
+        let acNumber = document.getElementById("acnumber").value;
+
+        userAccount.setName(name);
+        userAccount.setAccountNo(acNumber);
+
+        document.getElementById(
+          "account_holder_name"
+        ).innerText = `Account Holder Name: ${name}`;
+        document.getElementById(
+          "account_mobile"
+        ).innerText = `Mobile Number: ${number}`;
+        document.getElementById(
+          "account_number"
+        ).innerText = `Account Number: ${acNumber}`;
+
+        document.getElementById("name").value = "";
+        document.getElementById("Number").value = "";
+        document.getElementById("acnumber").value = "";
+      });
+
+    document
+      .getElementById("money_submit")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        let amount = parseFloat(
+          document.getElementById("deposit_money").value
+        );
+        userAccount.deposit(amount);
+
+        document.getElementById(
+          "account_balance"
+        ).innerText = `Account Balance: ₹${userAccount.getBalance()}`;
+        document.getElementById("deposit_money").value = "";
+      });
+
+    document.querySelectorAll(".buy-button").forEach((button) => {
+      button.addEventListener("click", function () {
+        let productName = this.getAttribute("data-product");
+        let price = parseFloat(this.getAttribute("data-price"));
+        buyProduct(productName, price);
+      });
+    });
+
+    document
+      .getElementById("check_balance_button")
+      .addEventListener("click", function () {
+        document.getElementById(
+          "balance_check"
+        ).innerText = `Current balance: ₹${userAccount.getBalance()}`;
+      });
+
+    function buyProduct(productName, price) {
+      if (price <= userAccount.getBalance()) {
+        userAccount.withdraw(price);
+        console.log(`Purchased ${productName} for ₹${price}.`);
+        alert(`Purchased ${productName} for ₹${price}.`);
+        document.getElementById(
+          "account_balance"
+        ).innerText = `Account Balance: ₹${userAccount.getBalance()}`;
+      } else {
+        console.log("Insufficient balance for the purchase.");
+        alert("Insufficient balance for the purchase.");
+      }
+    }
+  </script>
+</body>
+
 </html>
